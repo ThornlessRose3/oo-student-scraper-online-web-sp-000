@@ -45,7 +45,7 @@ class Scraper
             blog = find_url
           end
         end
-        binding.pry
+      binding.pry
       profile_quote = data.css(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
       bio = data.css(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder").css('p').text
     end
