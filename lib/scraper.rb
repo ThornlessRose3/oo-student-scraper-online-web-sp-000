@@ -42,9 +42,6 @@ class Scraper
           end
         end
       student_hash[:profile_quote] = doc.search(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
-
-    end
     student_hash
-    
    end
 end
