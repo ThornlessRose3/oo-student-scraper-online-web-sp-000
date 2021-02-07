@@ -21,7 +21,7 @@ class Scraper
     doc.css(".vitals-container").each do |data|
       # the social ones are mixed (i know...shoot me now)
       twitter = data.css(".social-icon-container").css('a').attribute('href').value
-      linkedin = data.ss(".social-icon-container").css('a')..attribute('href').value
+      linkedin = data.css(".social-icon-container").css('a')..attribute('href').value
       github = data.
       # blog = data. ???
       profile_quote = data.css(".vitals-text-container").css(".profile-quote").text
