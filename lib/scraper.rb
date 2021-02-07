@@ -26,6 +26,7 @@ class Scraper
     bio = ""
     doc.each do |data|
       # the social ones are mixed - grab all URLs
+      binding.pry
       social_urls = data.css(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
         case tag.name.downcase
         when 'a'
@@ -45,7 +46,6 @@ class Scraper
             blog = find_url
           end
         end
-      binding.pry
       profile_quote = data.css(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
       bio = data.css(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder").css('p').text
     end
