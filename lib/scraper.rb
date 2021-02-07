@@ -26,7 +26,6 @@ class Scraper
             tag['href']
         end
       }
-     # sort URLs by what is in in them
      while social_urls.length > 0
         find_url = social_urls.shift
         if find_url.include?("twitter")
