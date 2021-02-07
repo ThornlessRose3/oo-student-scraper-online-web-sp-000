@@ -18,6 +18,7 @@ class Scraper
 
   def self.scrape_profile_page(profile_url)
     doc = Nokogiri::HTML(open(profile_url))
+    student_hash ={}
     doc.each do |data|
       # the social ones are mixed - grab all URLs
       social_urls = data.search(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
@@ -30,19 +31,18 @@ class Scraper
       while social_urls.length > 0
           find_url = social_urls.shift
           if find_url.include?("twitter")
-            twitter = find_url
+            student_hash[:twitter] = find_url
           elsif find_url.include?("linkedin")
-            linkedin = find_url
+            student_hash[:linkedin] = find_url
           elsif find_url.include?("github")
-            github = find_url
+            student_hash[:github] = find_url
           else
-            blog = find_url
+            student_hash[:blog] = find_url
           end
         end
-      profile_quote = data.search(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
-      bio = data.search(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder").text
+      student_hash[:profile_quote] = data.search(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
+      student_hash[:bio] = data.search(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder").text
     end
-    student_hash = {:twitter=> twitter, :linkedin=>linkedin, :github=>github, :blog=>blog, :profile_quote=>profile_quote, :bio=>bio}
     student_hash
     
    end
