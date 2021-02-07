@@ -41,6 +41,7 @@ class Scraper
       end
       profile_quote = data.css(".vitals-text-container").css(".profile-quote").text
       bio = data.css(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".title-holder").css(".description-holder").css('p').text
+      student_hash = {}
       student_hash = {:twitter=>twitter, :linkedin=>linkedin, :github=>github, :blog=>blog, :profile_quote=>profile_quote, :bio=>bio}
       student_hash
       end
