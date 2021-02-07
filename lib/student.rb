@@ -20,14 +20,6 @@ class Student
   def add_student_attributes(attributes_hash)
     attributes_hash.each{ |key, value| self.send(("#{key}="), value)}
   end  
- # manual key-in, not desired
-#    self.twitter = attributes_hash[:twitter]
-#    self.linkedin = attributes_hash[:linkedin]
-#    self.github = attributes_hash[:github]
-#    self.blog = attributes_hash[:blog]
-#    self.profile_quote = attributes_hash[:profile_quote]
-#    self.bio = attributes_hash[:bio]
-#  end
 
   def self.all
     @@all
