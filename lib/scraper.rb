@@ -21,10 +21,14 @@ class Scraper
     doc.css(".vitals-container").each do |data|
       # the social ones are mixed (i know...shoot me now)
       binding.pry
-      twitter = data.css(".social-icon-container").css('a').attribute('href').value
-      linkedin = data.css(".social-icon-container").css('a').attribute('href').value
-      github = data.
-      # blog = data. ???
+      social_urls = data.css(".social-icon-container").search('a').map{ |tag|
+        case tag.name.downcase
+        when 'a'
+            tag['href']
+        end
+      }
+      while social_urls.length > 0
+        
       profile_quote = data.css(".vitals-text-container").css(".profile-quote").text
       bio = data.css(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".title-holder").css(".description-holder").css('p').text
       s = {:twitter=>twitter, :linkedin=>linkedin, :github=>github, :blog=>blog, :profile_quote=>profile_quote, :bio=>bio}
