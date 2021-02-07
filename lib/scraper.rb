@@ -20,6 +20,10 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
     twitter = ""
     linkedin = ""
+    github = ""
+    blog = ""
+    profile_quote = ""
+    bio = ""
     doc.css(".vitals-container").each do |data|
       # the social ones are mixed - grab all URLs
       social_urls = data.css(".social-icon-container").search('a').map{ |tag|
