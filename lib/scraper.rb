@@ -19,11 +19,10 @@ class Scraper
   def self.scrape_profile_page(profile_url)
     doc = Nokogiri::HTML(open(profile_url))
     student_hash ={}
-    doc.each do |data|
-      binding.pry
-      student_hash[:bio] = data.search(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder")
+    binding.pry
+    student_hash[:bio] = doc.search(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder")
       # the social ones are mixed - grab all URLs
-      social_urls = data.search(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
+      social_urls = doc.search(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
         case tag.name.downcase
         when 'a'
             tag['href']
@@ -42,7 +41,7 @@ class Scraper
             student_hash[:blog] = find_url
           end
         end
-      student_hash[:profile_quote] = data.search(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
+      student_hash[:profile_quote] = doc.search(".vitals-container").css(".vitals-text-container").css(".profile-quote").text
 
     end
     student_hash
