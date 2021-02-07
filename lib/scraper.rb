@@ -28,7 +28,9 @@ class Scraper
         end
       }
       while social_urls.length > 0
-        
+        find_url = social_urls.shift
+        case find_url
+        when ""
       profile_quote = data.css(".vitals-text-container").css(".profile-quote").text
       bio = data.css(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".title-holder").css(".description-holder").css('p').text
       s = {:twitter=>twitter, :linkedin=>linkedin, :github=>github, :blog=>blog, :profile_quote=>profile_quote, :bio=>bio}
