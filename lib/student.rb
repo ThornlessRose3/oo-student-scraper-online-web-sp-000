@@ -19,7 +19,8 @@ class Student
 
   def add_student_attributes(attributes_hash)
     attributes_hash.each do |key, value|
-      send("#{key}")
+      self.send("#[key}")=>value
+    end  
  # manual key-in, not desired
 #    self.twitter = attributes_hash[:twitter]
 #    self.linkedin = attributes_hash[:linkedin]
