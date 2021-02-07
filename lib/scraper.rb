@@ -26,7 +26,6 @@ class Scraper
     bio = ""
     doc.each do |data|
       # the social ones are mixed - grab all URLs
-      binding.pry
       social_urls = data.css(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
         case tag.name.downcase
         when 'a'
