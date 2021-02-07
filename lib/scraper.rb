@@ -20,6 +20,7 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
     doc.css(".vitals-container").each do |data|
       # the social ones are mixed (i know...shoot me now)
+      binding.pry
       social_urls = data.css(".social-icon-container").search('a').map{ |tag|
         case tag.name.downcase
         when 'a'
