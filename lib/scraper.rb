@@ -24,9 +24,9 @@ class Scraper
     blog = ""
     profile_quote = ""
     bio = ""
-    doc.css(".vitals-container").each do |data|
+    doc.each do |data|
       # the social ones are mixed - grab all URLs
-      social_urls = data.css(".social-icon-container").search('a').map{ |tag|
+      social_urls = data.css(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
         case tag.name.downcase
         when 'a'
             tag['href']
