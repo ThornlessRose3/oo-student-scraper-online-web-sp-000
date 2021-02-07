@@ -19,8 +19,8 @@ class Scraper
   def self.scrape_profile_page(profile_url)
     doc = Nokogiri::HTML(open(profile_url))
     student_hash ={}
-    binding.pry
     doc.each do |data|
+      binding.pry
       student_hash[:bio] = data.search(".details-container").css(".bio-block details-block").css(".bio-content content-holder").css(".description-holder")
       # the social ones are mixed - grab all URLs
       social_urls = data.search(".vitals-container").css(".social-icon-container").search('a').map{ |tag|
